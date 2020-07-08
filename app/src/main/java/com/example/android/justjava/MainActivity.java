@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        displayPrice(quantity*5);
+        String priceMessage = "Free";
+        displayMessage(priceMessage);
     }
 
     /**
@@ -51,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
     public void decrement(View view) {
         quantity = quantity -1;
         display(quantity);
+    }
+
+    private void displayMessage(String message) {
+        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
+        priceTextView.setText(message);
     }
 
 }
