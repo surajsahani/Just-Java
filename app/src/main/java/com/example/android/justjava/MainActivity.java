@@ -74,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
         return quantity * basePrice;
     }
     private  String createOrderSummary(String name, int price, boolean addWhippedCream, boolean addChocolate){
-        String priceMessage ="Name: " +name;
+        String priceMessage =getString(R.string.order_summary_name,name);
         priceMessage +=   "\nAdd Chocolate?" + addChocolate;
         priceMessage +=   "\nAdd Whipped Cream?" + addWhippedCream;
         priceMessage +=   "\nQuantity:" + quantity;
         priceMessage +=   "\nTotal: $" + price;
-        priceMessage +=   "\nThank you!";
+        priceMessage +=   "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
     private void displayQuantity(int numberOfCoffees) {
