@@ -33,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
         CheckBox whipped_cream_checkbox =(CheckBox) findViewById(R.id.whipped_cream_checkbox);
         CheckBox add_chocolate_checkbox =(CheckBox) findViewById(R.id.chocolate_checkbox);
 
-        boolean haswhippedCream = whipped_cream_checkbox.isChecked();
+        boolean hasWhippedCream = whipped_cream_checkbox.isChecked();
 
-        boolean addChocolate = add_chocolate_checkbox.isChecked();
+        boolean hasChocolate = add_chocolate_checkbox.isChecked();
 
-        int price =  calculatePrice();
-        displayMessage(createOrderSummary(name,price, haswhippedCream, addChocolate));
+        int price =  calculatePrice(hasWhippedCream, hasChocolate);
+        displayMessage(createOrderSummary(name,price, hasWhippedCream, hasChocolate));
     }
 
     /**
@@ -46,8 +46,15 @@ public class MainActivity extends AppCompatActivity {
      * @param
      * @return  total price
      */
-    private  int calculatePrice(){
-        return quantity * 5;
+    private  int calculatePrice(boolean addWhippedCream,boolean addChocolate){
+        int basePrice = 5;
+        if (addWhippedCream){
+            basePrice = basePrice +1;
+        }
+        if (addChocolate) {
+            basePrice = basePrice + 2;
+        }
+        return quantity * basePrice;
     }
     private  String createOrderSummary(String name, int price, boolean addWhippedCream, boolean addChocolate){
         String priceMessage ="Name: " +name;
@@ -83,9 +90,7 @@ public class MainActivity extends AppCompatActivity {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.price_text_view);
         orderSummaryTextView.setText(message);
     }
-    private void hasChecked(View view){
-        boolean hasChecked = true;
+
 
     }
 
-}
